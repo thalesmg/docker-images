@@ -47,6 +47,9 @@
           values (mapv #(-> x (.get %) record->clj) (range size))]
       (zipmap columns values))
 
+    (instance? java.time.temporal.Temporal x)
+    (str x)
+
     (nil? x) x
     (and (seqable? x) (not (string? x))) (mapv record->clj x)
     :else x))
